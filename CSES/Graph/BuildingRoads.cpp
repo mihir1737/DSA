@@ -41,7 +41,7 @@ signed main()
     int n, m; // n -> #vertices, m -> #edges
     cin >> n >> m;
 
-    vvi adj_list(n + 1); // for 1 based indexing keep in practice to declare n + 1.
+    vvi adj_list(n + 1); // for 1 based indexing keep practice to declare n + 1.
     vector<bool> visited(n + 1, false);
 
     forn(i, 0, m)
@@ -52,16 +52,20 @@ signed main()
         adj_list[v].pb(u);
     }
 
-    int connected_components = 0;
+    vi roots;
     forn(i, 1, n + 1)
     {
         if (!visited[i])
         {
             dfs(i, -1, adj_list, visited);
-            ++connected_components;
+            roots.pb(i);
         }
     }
 
-    cout << connected_components - 1 << endl;
+    cout << roots.size() - 1 << endl;
+    forn(i, 1, roots.size())
+    {
+        cout << roots[i] << " " << roots[i - 1] << endl;
+    }
     return 0;
 }
