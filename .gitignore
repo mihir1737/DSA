@@ -2,3 +2,6 @@
 *.exe
 *.out
 *.app
+
+# Unknown Files
+.DS_Store
